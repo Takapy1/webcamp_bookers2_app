@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :correct_user, only: [:edit, :update]
+  
   def index
     # ユーザ一覧用
     @users = User.all

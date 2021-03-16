@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :correct_user_post, only: [:edit, :update, :destroy]
+
   def index
     @books = Book.all.order(created_at: :desc)
     # 投稿用のオブジェクトを作成
@@ -42,15 +44,18 @@ class BooksController < ApplicationController
 
   def destroy
     book = Book.find(params[:id])
-    if book.user_id == current_user.id
-      Book.find(params[:id]).destroy
-      redirect_to books_path
-    end
+    book.destroy
+    redirect_to books_path
   end
 
   private
 
   def book_params
     params.require(:book).permit(:title, :body, :profile_image)
+  end
+
+  def correct_user_post
+    book = Book.find(params[:id])
+    redirect_to(root_url) unless book.user_id == current_user.id
   end
 end
