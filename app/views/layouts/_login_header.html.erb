@@ -11,9 +11,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
-                    <%= link_to "Home", current_user, class: "fas fa-home nav-link text-light" %>
+                    <%= link_to "Home", books_path, class: "fas fa-home nav-link text-light" %>
                     <%= link_to "Users", users_path, class: "fas fa-users nav-link text-light" %>
-                    <%= link_to "Books",  books_path, class: "fas fa-book-open nav-link text-light" %>
+                    <%= link_to "Books",  current_user, class: "fas fa-book-open nav-link text-light" %>
                     <%= link_to "logout", destroy_user_session_path,
                     {method: :delete, class: "fas fa-sign-out-alt nav-link text-light"} %>
                 </ul>
