@@ -19,7 +19,11 @@ class BooksController < ApplicationController
   end
 
   def show
-
+    # Book detailページからの投稿のためのオブジェクト
+    @book_new = Book.new
+    @book = Book.find(params[:id])
+    # current_userであるか怪しい!!!!
+    @user = current_user
   end
 
   private
