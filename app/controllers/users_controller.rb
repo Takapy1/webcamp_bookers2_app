@@ -21,11 +21,24 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user = User.find(params[:id])
   end
 
   def update
+    user = User.find(params[:id])
+    user.update(user_params)
+    redirect_to user
+  end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :profile_image, :introduction)
+
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless @user == current_user
   end
 
 end
