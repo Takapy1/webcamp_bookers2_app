@@ -1,1 +1,11 @@
-<h1>ユーザ詳細画面です</h1>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/userinfo', user: @user %>
+      <%= render 'shared/post_form', book: @book, user: @current_user %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render 'shared/post_lists', books: @books, user: @user %>
+    </div>
+  </div>
+</div>

@@ -19,11 +19,22 @@ class BooksController < ApplicationController
   end
 
   def show
-    # Book detailページからの投稿のためのオブジェクト
-    @book_new = Book.new
+    # Bookを特定する（URLの番号はBookモデルのid, Userじゃないから注意)
     @book = Book.find(params[:id])
-    # current_userであるか怪しい!!!!
-    @user = current_user
+    # 投稿用
+    @book_new = Book.new
+
+    # idで送られてきたBookを投稿したUserを特定する
+    # 投稿の持っているuser_idが投稿者のidと一致するのでそれを元に見つける。
+    @user = User.find_by(id: @book.user_id)
+  end
+
+  def destroy
+    book = Book.find(params[:id])
+    if book.user_id == current_user.id
+      Book.find(params[:id]).destroy
+      redirect_to books_path
+    end
   end
 
   private
