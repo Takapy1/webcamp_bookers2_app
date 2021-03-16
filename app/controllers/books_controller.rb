@@ -29,6 +29,17 @@ class BooksController < ApplicationController
     @user = User.find_by(id: @book.user_id)
   end
 
+  def edit
+    # Bookを特定する
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    book = Book.find(params[:id])
+    book.update(book_params)
+    redirect_to book
+  end
+
   def destroy
     book = Book.find(params[:id])
     if book.user_id == current_user.id
