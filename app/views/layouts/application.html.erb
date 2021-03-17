@@ -10,14 +10,14 @@
   </head>
 
   <body>
-    <%= render 'shared/flash_message' %>
     <% if user_signed_in? %>
-      <li>
-        <%= render 'layouts/login_header' %>
-      </li>
+      <%= render 'layouts/login_header' %>
     <% else %>
       <%= render 'layouts/logout_header' %>
     <% end %>
+    <div id="notice">
+      <%= render 'shared/flash_message' %>
+    </div>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
