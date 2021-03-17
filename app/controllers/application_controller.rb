@@ -16,13 +16,11 @@ class ApplicationController < ActionController::Base
 
   # ログイン後の遷移先指定
   def after_sign_in_path_for(resource)
-    flash[:notice] = "Signed in successfully."
     current_user
   end
 
   # ユーザ登録後の遷移先指定
   def after_sign_up_path_for(resource)
-    flash[:notice] = "Welcome! You have signed up successfully."
     current_user
   end
 
