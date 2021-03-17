@@ -15,10 +15,10 @@
     <% else %>
       <%= render 'layouts/logout_header' %>
     <% end %>
-    <div id="notice">
+    <main>
       <%= render 'shared/flash_message' %>
-    </div>
-    <%= yield %>
+      <%= yield %>
+    </main>
     <%= render 'layouts/footer' %>
   </body>
 </html>
