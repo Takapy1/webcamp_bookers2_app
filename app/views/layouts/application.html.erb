@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <%= render 'shared/flash_message' %>
     <% if user_signed_in? %>
       <li>
         <%= render 'layouts/login_header' %>
