@@ -1,11 +1,12 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user, only: [:index, :show, :edit]
   before_action :correct_user_post, only: [:edit, :update, :destroy]
 
   def index
     @books = Book.all.order(created_at: :desc)
     # 投稿用のオブジェクトを作成
     @book = Book.new
-    @user = current_user
+    @current_user = current_user
   end
 
   def create
@@ -61,6 +62,6 @@ class BooksController < ApplicationController
 
   def correct_user_post
     book = Book.find(params[:id])
-    redirect_to(root_url) unless book.user_id == current_user.id
+    redirect_to(books_path) unless book.user_id == current_user.id
   end
 end
