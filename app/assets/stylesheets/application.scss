@@ -17,10 +17,6 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-li {
-  list-style: none;
-}
-
 div.field, div.actions {
   margin-bottom: 10px;
 }
@@ -31,34 +27,4 @@ div.field, div.actions {
 
 #notice {
   color: green;
-}
-
-.favorited-btn {
-  color: #d32f2f
-}
-
-.unfavorited-btn {
-  color: #007bff
-}
-
-
-.btn-outline-secondary {
-  color: block;
-}
-
-.comment-area > ul {
-  padding-inline-start: 0;
-}
-
-.comment-user {
-  display: inline-block;
-}
-
-.comment-body {
-  display: inline-block;
-   vertical-align: middle;
-}
-
-.destroy-btn {
-  display: inline-block;
 }
