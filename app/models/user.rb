@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    include UsersHelper
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,6 +7,8 @@ class User < ApplicationRecord
         # :validatable
    attachment :profile_image
    has_many :books, dependent: :destroy
+   has_many :favorites, dependent: :destroy
+   has_many :book_comments, dependent: :destroy
 
    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/
